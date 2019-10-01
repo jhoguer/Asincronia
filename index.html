@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pokemon</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f6bd20;
+        }
+    </style>
+    <img src="" alt="" id="pokemon" height="200">
+
+</head>
+<body>
+    <script>
+        const $pokemon = document.querySelector('#pokemon')
+        function renderPokemon(image) {
+            $pokemon.setAttribute('src', image)
+        }
+
+        // fetch('pikachu.json')
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         renderPokemon(data.image)
+        //     })
+        
+
+        
+        // fetch('pikachu.png')
+        //     .then(response => response.blob())
+        //     .then(binary => {
+        //         const domString = URL.createObjectURL(binary)
+        //         renderPokemon(domString)
+        //     })
+
+        fetch('https://pokeapi.co/api/v2/pokemon/25')
+            .then(response => response.json())
+            .then(data => {                
+                renderPokemon(data.sprites.front_default)
+            })
+    </script>
+</body>
+</html>
